@@ -7,8 +7,22 @@
   <meta name="author" content="Kernia" />
   <title>Kernia — Soluciones de negocios</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
 </head>
 <body>
+  <!-- Fondo WebGL persistente -->
+  <canvas class="world-canvas" aria-hidden="true" id="world-canvas"></canvas>
+
+  <!-- Capa de fallback si WebGL no está disponible -->
+  <noscript>
+    <style>.world-canvas{display:none}</style>
+  </noscript>
 
   <!-- ===================================================
        ENCABEZADO / NAVEGACIÓN
@@ -16,7 +30,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="Kernia — Inicio">
-        <span class="logo-mark">K</span>
+        <span class="logo-mark" aria-hidden="true">K</span>
         <span class="logo-name">Kernia</span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menú">
@@ -36,10 +50,10 @@
   </header>
 
   <!-- ===================================================
-       HERO PRINCIPAL
+       CONTENIDO SEMÁNTICO
   =================================================== -->
   <main>
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="chapter hero" id="hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <p class="hero-eyebrow">Soluciones de negocios</p>
         <h1 id="hero-title" class="hero-title">Automatizamos<br />tu empresa.</h1>
@@ -54,63 +68,40 @@
       </div>
     </section>
 
-    <!-- ===================================================
-         SERVICIOS
-    =================================================== -->
-    <section class="section" id="servicios" aria-labelledby="servicios-title">
+    <section class="chapter section" id="servicios" aria-labelledby="servicios-title">
       <div class="container">
         <h2 id="servicios-title" class="section-title">Qué hacemos</h2>
         <div class="services-grid">
-
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">⚙️</div>
             <h3>Automatización de procesos</h3>
             <p>Eliminamos tareas repetitivas y reducimos errores con flujos automatizados adaptados a tu operación.</p>
           </article>
-
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">🤖</div>
             <h3>Inteligencia artificial aplicada</h3>
             <p>Soluciones de IA que analizan datos, predicen comportamientos y optimizan decisiones de negocio.</p>
           </article>
-
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">💬</div>
             <h3>Chatbots y asistentes</h3>
             <p>Asistentes conversacionales inteligentes para atención al cliente, ventas y soporte interno.</p>
           </article>
-
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">🔗</div>
             <h3>Integraciones WhatsApp y APIs</h3>
             <p>Conectamos tus sistemas con WhatsApp Business, CRMs, ERPs y cualquier API que necesites.</p>
           </article>
-
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">🖥️</div>
             <h3>Sistemas y paneles operativos</h3>
             <p>Desarrollamos dashboards y sistemas internos que centralizan tu información y agilizan la gestión.</p>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- ===================================================
-         CONTACTO
-    =================================================== -->
-    <section class="section section-alt" id="contacto" aria-labelledby="contacto-title">
-      <div class="container contact-inner">
-        <h2 id="contacto-title" class="section-title">Hablemos</h2>
-        <p class="section-desc">Contanos en qué etapa está tu empresa y encontramos juntos la mejor solución.</p>
-        <a href="mailto:hola@kernia.com" class="btn btn-primary">hola@kernia.com</a>
-      </div>
-    </section>
-
-    <!-- ===================================================
-         METODOLOGÍA
-    =================================================== -->
-    <section class="section" id="metodologia" aria-labelledby="metodologia-title">
+    <section class="chapter section section-alt" id="metodologia" aria-labelledby="metodologia-title">
       <div class="container">
         <h2 id="metodologia-title" class="section-title">Metodología</h2>
         <p class="section-desc">Un proceso claro, iterativo y orientado a resultados, pensado para empresas que necesitan avanzar sin fricción.</p>
@@ -147,16 +138,21 @@
       </div>
     </section>
 
-    <!-- ===================================================
-         DEMO / SHOWCASE
-    =================================================== -->
-    <section class="section section-alt" id="demo" aria-labelledby="demo-title">
+    <section class="chapter section section-alt" id="demo" aria-labelledby="demo-title">
       <div class="container demo-inner">
         <h2 id="demo-title" class="section-title">Demo</h2>
         <p class="section-desc">Espacio reservado para incorporar demostraciones interactivas y un asistente de IA en una próxima iteración.</p>
         <div class="demo-placeholder" aria-label="Demo programada para una próxima iteración">
           <span class="demo-placeholder-marker" aria-hidden="true">Demo próximamente</span>
         </div>
+      </div>
+    </section>
+
+    <section class="chapter section" id="contacto" aria-labelledby="contacto-title">
+      <div class="container contact-inner">
+        <h2 id="contacto-title" class="section-title">Hablemos</h2>
+        <p class="section-desc">Contanos en qué etapa está tu empresa y encontramos juntos la mejor solución.</p>
+        <a href="mailto:hola@kernia.com" class="btn btn-primary">hola@kernia.com</a>
       </div>
     </section>
   </main>
@@ -171,6 +167,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" type="module"></script>
 </body>
 </html>
